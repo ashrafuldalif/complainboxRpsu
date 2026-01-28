@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPSU Complaint Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-ornament"></div>
+            <h1 class="title">RPSU</h1>
+            <p class="subtitle">Complaint Box</p>
+            <div class="header-line"></div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <circle cx="12" cy="12" r="5" stroke-width="2" />
+                    <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" />
+                    <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" />
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" />
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" />
+                    <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" />
+                    <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" />
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" />
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" />
+                </svg>
+                <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" />
+                </svg>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <div id="locationWarning" class="location-warning" style="display: none;">
+                <h2>Access Restricted</h2>
+                <p>You are not within the university premises. To submit complaints or view the feed, please login or
+                    register.</p>
+                <button id="retakeLocationBtn" class="retake-btn">
+                    <span>Retake Location</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <circle cx="12" cy="10" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="auth-buttons">
+                    <a href="/login" class="auth-btn login-btn">
+                        <span>Login</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <polyline points="10,17 15,12 10,7" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <line x1="15" y1="12" x2="3" y2="12" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="/register" class="auth-btn register-btn">
+                        <span>Register</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <circle cx="9" cy="7" r="4" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <line x1="19" y1="8" x2="19" y2="14" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <line x1="22" y1="11" x2="16" y2="11" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div id="locationLoading" class="location-loading">
+                <div class="loading-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke-width="4" class="loading-circle" />
+                    </svg>
+                </div>
+                <p>Checking your location...</p>
+            </div>
+
+            <div class="privacy-notice">
+                <svg class="privacy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+                <p>Your identity is fully protected. Complaints are submitted anonymously without any personal
+                    information.</p>
+            </div>
+
+            <form id="complaintForm" class="complaint-form" method="POST" action="/submit" enctype="multipart/form-data"
+                style="display: none;">
+                <div class="form-section">
+                    <h3 class="section-title">Complaint Details</h3>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" name="department" required>
+                                <option value="">Select Department</option>
+                                <option value="administration">Administration</option>
+                                <option value="academics">Academics</option>
+                                <option value="facilities">Facilities</option>
+                                <option value="library">Library</option>
+                                <option value="cafeteria">Cafeteria</option>
+                                <option value="hostel">Hostel</option>
+                                <option value="it">IT Services</option>
+                                <option value="transport">Transport</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="harassment">Harassment/Bullying</option>
+                                <option value="discrimination">Discrimination</option>
+                                <option value="infrastructure">Infrastructure Issue</option>
+                                <option value="faculty">Faculty Related</option>
+                                <option value="admin">Administrative Issue</option>
+                                <option value="financial">Financial Matter</option>
+                                <option value="academic">Academic Concern</option>
+                                <option value="safety">Safety/Security</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" placeholder="Brief title of your complaint"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="complaint">Complaint Details</label>
+                        <textarea id="complaint" name="complaint" rows="6"
+                            placeholder="Please describe your complaint in detail..." required></textarea>
+                        <div class="char-count"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">Attach Image (Optional)</label>
+                        <input type="file" id="image" name="image" accept="image/*">
+                        <small class="form-note">Supported formats: PNG, JPG, JPEG, GIF. Max size: 16MB</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority Level</label>
+                        <div class="priority-group">
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="low" required>
+                                <span class="radio-custom"></span>
+                                <span>Low</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="medium" checked>
+                                <span class="radio-custom"></span>
+                                <span>Medium</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="priority" value="high">
+                                <span class="radio-custom"></span>
+                                <span>High</span>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <span>Submit Complaint</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </form>
+
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <h2>Complaint Submitted Successfully</h2>
+                <p>Your anonymous complaint has been recorded.</p>
+                <div class="reference-box">
+                    <span class="ref-label">Reference ID:</span>
+                    <code id="referenceId"></code>
+                </div>
+                <p class="success-note">Save this reference ID to track your complaint status. We will review and
+                    respond within 3-5 business days.</p>
+                <button id="submitAnother" class="secondary-btn">
+                    <span>Submit Another Complaint</span>
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>R. P. Shaha University </p>
+            <p class="footer-note">All complaints are treated confidentially</p>
+            <div class="footer-links">
+                <a href="/feed" class="feed-link">View Complaints Feed</a>
+                <a href="/admin" class="admin-link">Admin Panel</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/getlocation.js') }}"></script>
+
+</body>
+
+</html>

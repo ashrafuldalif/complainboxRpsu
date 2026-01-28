@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - RPSU Complaint Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="admin-container">
+        <header class="admin-header">
+            <div class="header-left">
+                <h1>Admin Dashboard</h1>
+                <p class="header-subtitle">Anonymous Complaint Management System</p>
+            </div>
+            <div class="admin-nav">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="5" stroke-width="2" />
+                        <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" />
+                        <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" />
+                        <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" />
+                        <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" />
+                    </svg>
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" />
+                    </svg>
+                </button>
+                <a href="/" class="nav-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M19 12H5M12 19l-7-7 7-7" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Back to Form
+                </a>
+            </div>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Complaints</h3>
+                    <p class="stat-number">{{ complaints|length }}</p>
+                </div>
+            </div>
+            <div class="stat-card pending">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10" stroke-width="2" />
+                        <polyline points="12 6 12 12 16 14" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3>Pending</h3>
+                    <p class="stat-number">{{ complaints|selectattr('status', 'equalto', 'pending')|list|length }}</p>
+                </div>
+            </div>
+            <div class="stat-card progress">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path
+                            d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3>In Progress</h3>
+                    <p class="stat-number">{{ complaints|selectattr('status', 'equalto', 'in_progress')|list|length }}
+                    </p>
+                </div>
+            </div>
+            <div class="stat-card resolved">
+                <div class="stat-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="stat-content">
+                    <h3>Resolved</h3>
+                    <p class="stat-number">{{ complaints|selectattr('status', 'equalto', 'resolved')|list|length }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="complaints-section">
+            <div class="section-header">
+                <h2>All Complaints</h2>
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="pending">Pending</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    <select id="priorityFilter" class="filter-select">
+                        <option value="all">All Priority</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+            </div>
+
+            {% if complaints %}
+            <div class="complaints-grid">
+                {% for complaint in complaints %}
+                <div class="complaint-card" data-status="{{ complaint.status }}"
+                    data-priority="{{ complaint.priority }}">
+                    {% if complaint.image_path %}
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename=complaint.image_path) }}" alt="Complaint Image"
+                            class="complaint-image">
+                    </div>
+                    {% endif %}
+
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="card-badges">
+                                <span class="badge status-{{ complaint.status }}">{{ complaint.status|replace('_', '
+                                    ')|title }}</span>
+                                <span class="badge priority-{{ complaint.priority }}">{{ complaint.priority|upper
+                                    }}</span>
+                            </div>
+                            <span class="card-date">{{ complaint.created_at.strftime('%b %d, %Y') }}</span>
+                        </div>
+
+                        <h3 class="card-title">{{ complaint.subject }}</h3>
+
+                        <div class="card-meta">
+                            <span class="meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                {{ complaint.department|title }}
+                            </span>
+                            <span class="meta-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path
+                                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <polyline points="22,6 12,13 2,6" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                {{ complaint.category|title }}
+                            </span>
+                        </div>
+
+                        <p class="card-excerpt">{{ complaint.complaint[:150] }}{% if complaint.complaint|length > 150
+                            %}...{% endif %}</p>
+
+                        <div class="card-footer">
+                            <code class="reference-id">{{ complaint.reference_id }}</code>
+                            <a href="/admin/complaint/{{ complaint.id }}" class="btn-view">
+                                View Details
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty-state">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <p>No complaints submitted yet</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Filter functionality
+        const statusFilter = document.getElementById('statusFilter');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const cards = document.querySelectorAll('.complaint-card');
+
+        function filterCards() {
+            const statusValue = statusFilter.value;
+            const priorityValue = priorityFilter.value;
+
+            cards.forEach(card => {
+                const cardStatus = card.dataset.status;
+                const cardPriority = card.dataset.priority;
+
+                const statusMatch = statusValue === 'all' || cardStatus === statusValue;
+                const priorityMatch = priorityValue === 'all' || cardPriority === priorityValue;
+
+                if (statusMatch && priorityMatch) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        if (statusFilter) statusFilter.addEventListener('change', filterCards);
+        if (priorityFilter) priorityFilter.addEventListener('change', filterCards);
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

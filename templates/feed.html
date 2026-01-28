@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaints Feed - RPSU Complaint Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/feed.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="feed-header">
+            <h1>Complaints Feed</h1>
+            <div class="header-controls">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="5" stroke-width="2" />
+                        <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" />
+                        <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" />
+                        <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" />
+                        <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" />
+                    </svg>
+                    <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" />
+                    </svg>
+                </button>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+        <div id="complaints-feed">
+            {% for complaint in complaints %}
+            <div class="complaint-card" data-id="{{ complaint.id }}">
+                {% if complaint.image_path %}
+                <img src="{{ url_for('static', filename=complaint.image_path) }}" alt="Complaint Image"
+                    class="complaint-image">
+                {% endif %}
+                <div class="complaint-content">
+                    <h3>{{ complaint.subject }}</h3>
+                    <p class="complaint-text">{{ complaint.complaint }}</p>
+                    <p class="complaint-time">{{ complaint.created_at }}</p>
+                    <div class="vote-buttons">
+                        <button class="agree-btn" data-id="{{ complaint.id }}">
+                            Agree <span class="agree-count">{{ complaint.agree_count }}</span>
+                        </button>
+                        <button class="disagree-btn" data-id="{{ complaint.id }}">
+                            Disagree <span class="disagree-count">{{ complaint.disagree_count }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/feed.js') }}"></script>
+</body>
+
+</html>

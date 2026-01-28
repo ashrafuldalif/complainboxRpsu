@@ -1,0 +1,315 @@
+:root {
+    /* Primary: Muted "Denim" tones to complement the cream base */
+    --primary: #4f5b93;
+    --primary-dark: #373f6a;
+    --primary-light: #7e89c0;
+    --secondary: #2c3344;
+    --accent: #c27803;
+    --success: #388e3c;
+    --warning: #d97706;
+    --danger: #b91c1c;
+    --info: #3b71ca;
+
+    /* Backgrounds: The Cream Core */
+    --bg-primary: #fcfaf2;
+    /* Soft Cream */
+    --bg-secondary: #f4f1e8;
+    /* Warm Sand */
+    --bg-tertiary: #ebe7db;
+    /* Muted Stone */
+
+    /* Text: Deep Coffee/Charcoal instead of harsh black */
+    --text-primary: #2d2d2a;
+    --text-secondary: #5e5e5b;
+    --text-tertiary: #8c8c88;
+
+    --border: #e3dec9;
+    --border-light: #ece7d5;
+
+    --shadow-sm: 0 1px 2px 0 rgba(45, 45, 42, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(45, 45, 42, 0.08);
+    --shadow-lg: 0 10px 15px -3px rgba(45, 45, 42, 0.08);
+    --shadow-xl: 0 20px 25px -5px rgba(45, 45, 42, 0.1);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    /* Feed UI: Cohesive warm tones */
+    --feed-bg: #f5f2e9;
+    --feed-text: #2d2d2a;
+    --feed-card-bg: #ffffff;
+    /* Keeping cards pure white for "pop" against cream */
+    --feed-text-secondary: #5e5e5b;
+    --feed-text-tertiary: #8c8c88;
+    --feed-agree: #43a047;
+    --feed-agree-hover: #2e7d32;
+    --feed-disagree: #d32f2f;
+    --feed-disagree-hover: #b71c1c;
+
+    /* Gradient: Warmer, more sophisticated transition */
+    --gradient-bg: linear-gradient(135deg, #4f5b93 0%, #7e89c0 100%);
+
+    /* Alpha Values: Adjusted to match the new primary-indigo */
+    --bg-overlay1: rgba(79, 91, 147, 0.15);
+    --bg-overlay2: rgba(185, 28, 28, 0.1);
+    --bg-overlay3: rgba(59, 113, 202, 0.1);
+
+    --white-alpha-80: rgba(255, 255, 255, 0.8);
+    --black-alpha-20: rgba(45, 45, 42, 0.15);
+    --white-alpha-90: rgba(255, 255, 255, 0.9);
+    --white-alpha-30: rgba(255, 255, 255, 0.3);
+    --white-alpha-95: rgba(255, 255, 255, 0.95);
+    --primary-alpha-20: rgba(79, 91, 147, 0.2);
+    --white-alpha-98: rgba(255, 255, 255, 0.98);
+    --white-alpha-50: rgba(255, 255, 255, 0.5);
+    --primary-alpha-10: rgba(79, 91, 147, 0.1);
+    --primary-alpha-05: rgba(79, 91, 147, 0.05);
+    --black-alpha-10: rgba(45, 45, 42, 0.08);
+    --white-alpha-20: rgba(255, 255, 255, 0.2);
+    --primary-alpha-30: rgba(79, 91, 147, 0.3);
+    --primary-alpha-40: rgba(79, 91, 147, 0.4);
+    --danger-alpha-10: rgba(185, 28, 28, 0.1);
+    --danger-alpha-20: rgba(185, 28, 28, 0.2);
+
+    /* Badge colors: Warm earthy backgrounds */
+    --success-dark: #2d662f;
+    --success-alpha-10: rgba(56, 142, 60, 0.1);
+    --success-alpha-30: rgba(56, 142, 60, 0.3);
+    --success-alpha-40: rgba(56, 142, 60, 0.4);
+    --warning-alpha-10: rgba(217, 119, 6, 0.1);
+    --info-alpha-10: rgba(59, 113, 202, 0.1);
+
+    --badge-low-bg: #e8f5e9;
+    --badge-low-text: #2e7d32;
+    --badge-medium-bg: #fff3e0;
+    --badge-medium-text: #e65100;
+    --badge-high-bg: #ffebee;
+    --badge-high-text: #c62828;
+    --badge-pending-bg: #fffde7;
+    --badge-pending-text: #fbc02d;
+    --badge-progress-bg: #e3f2fd;
+    --badge-progress-text: #1565c0;
+    --badge-resolved-bg: #e0f2f1;
+    --badge-resolved-text: #00695c;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    /* Primary: Slightly brighter for dark backgrounds */
+    --primary: #7e89c0;
+    --primary-dark: #9ba3d4;
+    --primary-light: #a8b3e0;
+    --secondary: #4a5568;
+    --accent: #fbbf24;
+    --success: #48bb78;
+    --warning: #ed8936;
+    --danger: #f56565;
+    --info: #63b3ed;
+
+    /* Backgrounds: Dark theme */
+    --bg-primary: #1a202c;
+    /* Dark slate */
+    --bg-secondary: #2d3748;
+    /* Darker slate */
+    --bg-tertiary: #4a5568;
+    /* Medium slate */
+
+    /* Text: High contrast light colors for dark backgrounds */
+    --text-primary: #ffffff;
+    /* Pure white for maximum contrast */
+    --text-secondary: #f1f5f9;
+    /* Very light gray */
+    --text-tertiary: #cbd5e1;
+    /* Light gray with good contrast */
+
+    --border: #4a5568;
+    --border-light: #64748b;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
+
+    /* Feed UI: Dark theme with high contrast */
+    --feed-bg: #1a202c;
+    --feed-text: #ffffff;
+    /* Pure white for maximum contrast */
+    --feed-card-bg: #2d3748;
+    /* Darker background for cards */
+    --feed-text-secondary: #f1f5f9;
+    /* Very light gray */
+    --feed-text-tertiary: #cbd5e1;
+    /* Light gray with good contrast */
+    --feed-agree: #48bb78;
+    --feed-agree-hover: #38a169;
+    --feed-disagree: #f56565;
+    --feed-disagree-hover: #e53e3e;
+
+    /* Gradient: Dark theme gradient */
+    --gradient-bg: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+
+    /* Alpha Values: Dark theme with better contrast */
+    --bg-overlay1: rgba(113, 128, 150, 0.2);
+    --bg-overlay2: rgba(245, 101, 101, 0.15);
+    --bg-overlay3: rgba(99, 179, 237, 0.15);
+
+    --white-alpha-80: rgba(255, 255, 255, 0.9);
+    /* Increased opacity for better contrast */
+    --black-alpha-20: rgba(0, 0, 0, 0.3);
+    --white-alpha-90: rgba(255, 255, 255, 0.95);
+    /* Increased opacity */
+    --white-alpha-30: rgba(255, 255, 255, 0.4);
+    /* Increased opacity */
+    --white-alpha-95: rgba(255, 255, 255, 0.98);
+    /* Increased opacity */
+    --primary-alpha-20: rgba(126, 137, 192, 0.25);
+    --white-alpha-98: rgba(255, 255, 255, 0.98);
+    --white-alpha-50: rgba(255, 255, 255, 0.6);
+    /* Increased opacity */
+    --primary-alpha-10: rgba(126, 137, 192, 0.15);
+    --primary-alpha-05: rgba(126, 137, 192, 0.08);
+    --black-alpha-10: rgba(0, 0, 0, 0.15);
+    --white-alpha-20: rgba(255, 255, 255, 0.3);
+    /* Increased opacity */
+    --primary-alpha-30: rgba(126, 137, 192, 0.35);
+    --primary-alpha-40: rgba(126, 137, 192, 0.45);
+    --danger-alpha-10: rgba(245, 101, 101, 0.15);
+    --danger-alpha-20: rgba(245, 101, 101, 0.25);
+
+    /* Badge colors: Dark theme with better contrast */
+    --success-dark: #38a169;
+    --success-alpha-10: rgba(72, 187, 120, 0.15);
+    --success-alpha-30: rgba(72, 187, 120, 0.35);
+    --success-alpha-40: rgba(72, 187, 120, 0.45);
+    --warning-alpha-10: rgba(237, 137, 54, 0.15);
+    --info-alpha-10: rgba(99, 179, 237, 0.15);
+
+    --badge-low-bg: #2f855a;
+    --badge-low-text: #e6fffa;
+    /* Much lighter text */
+    --badge-medium-bg: #dd6b20;
+    --badge-medium-text: #fffaf0;
+    /* Much lighter text */
+    --badge-high-bg: #c53030;
+    --badge-high-text: #fff5f5;
+    /* Much lighter text */
+    --badge-pending-bg: #d69e2e;
+    --badge-pending-text: #fffff0;
+    /* Much lighter text */
+    --badge-progress-bg: #3182ce;
+    --badge-progress-text: #ebf8ff;
+    /* Much lighter text */
+    --badge-resolved-bg: #2c7a7b;
+    --badge-resolved-text: #e6fffa;
+    /* Much lighter text */
+}
+
+/* Additional Dark Mode Overrides for Better Contrast */
+[data-theme="dark"] {
+    /* Form elements with better contrast */
+    --form-bg: #374151;
+    --form-border: #6b7280;
+    --form-text: #ffffff;
+
+    /* Card backgrounds with better contrast */
+    --card-bg: #374151;
+    --card-border: #6b7280;
+
+    /* Button text with maximum contrast */
+    --button-text: #ffffff;
+}
+
+/* Dark mode specific overrides */
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] input[type="email"],
+[data-theme="dark"] input[type="password"],
+[data-theme="dark"] input[type="file"],
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+    background: var(--form-bg) !important;
+    color: var(--form-text) !important;
+    border-color: var(--form-border) !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+    color: #9ca3af !important;
+}
+
+[data-theme="dark"] .complaint-form,
+[data-theme="dark"] .login-form-container,
+[data-theme="dark"] .admin-header,
+[data-theme="dark"] .detail-card {
+    background: rgba(55, 65, 81, 0.95) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .complaint-card,
+[data-theme="dark"] .stat-card {
+    background: rgba(55, 65, 81, 0.95) !important;
+    border-color: var(--card-border) !important;
+}
+
+/* Privacy Notice Dark Mode Fix */
+[data-theme="dark"] .privacy-notice {
+    background: rgba(55, 65, 81, 0.95) !important;
+    border: 1px solid rgba(126, 137, 192, 0.3) !important;
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .privacy-notice p {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .privacy-icon {
+    stroke: #7e89c0 !important;
+}
+
+/* Complaints Section Dark Mode Fix */
+[data-theme="dark"] .complaints-section {
+    background: rgba(55, 65, 81, 0.95) !important;
+    border: 1px solid rgba(107, 114, 128, 0.3) !important;
+    backdrop-filter: blur(20px);
+}
+
+/* Footer Links Dark Mode Support */
+[data-theme="dark"] .feed-link {
+    background: linear-gradient(135deg, #7e89c0 0%, #9ba3d4 100%) !important;
+    border-color: rgba(126, 137, 192, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(126, 137, 192, 0.3) !important;
+}
+
+[data-theme="dark"] .feed-link:hover {
+    background: linear-gradient(135deg, #9ba3d4 0%, #a8b3e0 100%) !important;
+    border-color: #7e89c0 !important;
+    box-shadow: 0 8px 20px rgba(126, 137, 192, 0.4) !important;
+}
+
+[data-theme="dark"] .admin-link {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%) !important;
+    border-color: rgba(245, 101, 101, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(245, 101, 101, 0.3) !important;
+}
+
+[data-theme="dark"] .admin-link:hover {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%) !important;
+    border-color: #f56565 !important;
+    box-shadow: 0 8px 20px rgba(245, 101, 101, 0.4) !important;
+}
+
+/* Admin Complaint Cards Dark Mode */
+[data-theme="dark"] .card-content {
+    background: transparent;
+}
+
+[data-theme="dark"] .card-image {
+    border-bottom: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+/* Feed Header Dark Mode Fix */
+[data-theme="dark"] .feed-header {
+    background: rgba(55, 65, 81, 0.95) !important;
+    border: 1px solid rgba(107, 114, 128, 0.3) !important;
+    backdrop-filter: blur(20px);
+}
