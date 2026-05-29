@@ -1,4 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    // ─── Lightbox ─────────────────────────────────────────────────────────────
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.querySelectorAll('.complaint-image').forEach(img => {
+        img.addEventListener('click', function () {
+            lightboxImg.src = this.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click or X button
+    lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox || e.target.closest('.lightbox-close')) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ─── Voting ───────────────────────────────────────────────────────────────
     const agreeButtons = document.querySelectorAll('.agree-btn');
     const disagreeButtons = document.querySelectorAll('.disagree-btn');
 
