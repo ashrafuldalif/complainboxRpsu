@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPSU Complaint Box</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -23,20 +24,8 @@
             <p class="subtitle">Complaint Box</p>
             <div class="header-line"></div>
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
-                <svg class="theme-icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="12" cy="12" r="5" stroke-width="2" />
-                    <line x1="12" y1="1" x2="12" y2="3" stroke-width="2" />
-                    <line x1="12" y1="21" x2="12" y2="23" stroke-width="2" />
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke-width="2" />
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke-width="2" />
-                    <line x1="1" y1="12" x2="3" y2="12" stroke-width="2" />
-                    <line x1="21" y1="12" x2="23" y2="12" stroke-width="2" />
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke-width="2" />
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke-width="2" />
-                </svg>
-                <svg class="theme-icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke-width="2" />
-                </svg>
+                <i class="fa-solid fa-sun theme-icon sun"></i>
+                <i class="fa-solid fa-moon theme-icon moon"></i>
             </button>
         </header>
 
@@ -47,54 +36,29 @@
                     register.</p>
                 <button id="retakeLocationBtn" class="retake-btn">
                     <span>Retake Location</span>
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <circle cx="12" cy="10" r="3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
+                    <i class="fa-solid fa-location-dot btn-icon"></i>
                 </button>
                 <div class="auth-buttons">
                     <a href="/login" class="auth-btn login-btn">
                         <span>Login</span>
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <polyline points="10,17 15,12 10,7" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <line x1="15" y1="12" x2="3" y2="12" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="fa-solid fa-right-to-bracket btn-icon"></i>
                     </a>
                     <a href="/register" class="auth-btn register-btn">
                         <span>Register</span>
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <circle cx="9" cy="7" r="4" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <line x1="19" y1="8" x2="19" y2="14" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <line x1="22" y1="11" x2="16" y2="11" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
+                        <i class="fa-solid fa-user-plus btn-icon"></i>
                     </a>
                 </div>
             </div>
 
             <div id="locationLoading" class="location-loading">
                 <div class="loading-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <circle cx="12" cy="12" r="10" stroke-width="4" class="loading-circle" />
-                    </svg>
+                    <i class="fa-solid fa-spinner fa-spin"></i>
                 </div>
                 <p>Checking your location...</p>
             </div>
 
             <div class="privacy-notice">
-                <svg class="privacy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                </svg>
+                <i class="fa-solid fa-shield-halved privacy-icon"></i>
                 <p>Your identity is fully protected. Complaints are submitted anonymously without any personal
                     information.</p>
             </div>
@@ -184,21 +148,13 @@
 
                 <button type="submit" class="submit-btn">
                     <span>Submit Complaint</span>
-                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
+                    <i class="fa-solid fa-paper-plane btn-icon"></i>
                 </button>
             </form>
 
             <div id="successMessage" class="success-message">
                 <div class="success-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
+                    <i class="fa-solid fa-circle-check"></i>
                 </div>
                 <h2>Complaint Submitted Successfully</h2>
                 <p>Your anonymous complaint has been recorded.</p>
@@ -219,7 +175,6 @@
             <p class="footer-note">All complaints are treated confidentially</p>
             <div class="footer-links">
                 <a href="/feed" class="feed-link">View Complaints Feed</a>
-                <a href="/admin" class="admin-link">Admin Panel</a>
             </div>
         </footer>
     </div>

@@ -96,9 +96,12 @@ body::before {
 }
 
 .theme-icon {
+    display: inline-block;
     width: 20px;
-    height: 20px;
-    stroke: var(--text-primary);
+    height: auto;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--text-primary);
     transition: all 0.3s ease;
     position: absolute;
 }
@@ -214,6 +217,12 @@ body::before {
     transform: translateY(-2px);
 }
 
+.agree-btn.voted {
+    background: var(--success-dark);
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.4);
+    transform: translateY(-1px);
+}
+
 .disagree-btn {
     background: var(--danger);
     color: white;
@@ -222,6 +231,12 @@ body::before {
 .disagree-btn:hover {
     background: #c53030;
     transform: translateY(-2px);
+}
+
+.disagree-btn.voted {
+    background: #c53030;
+    box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.4);
+    transform: translateY(-1px);
 }
 
 /* Responsive Design */

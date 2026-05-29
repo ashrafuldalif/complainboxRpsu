@@ -399,9 +399,12 @@
  }
 
  .theme-icon {
+     display: inline-block;
      width: 20px;
-     height: 20px;
-     stroke: white;
+     height: auto;
+     font-size: 1rem;
+     line-height: 1;
+     color: var(--text-primary);
      transition: all 0.3s ease;
      position: absolute;
  }

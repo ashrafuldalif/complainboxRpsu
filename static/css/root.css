@@ -263,7 +263,7 @@
 }
 
 [data-theme="dark"] .privacy-icon {
-    stroke: #7e89c0 !important;
+    color: #7e89c0 !important;
 }
 
 /* Complaints Section Dark Mode Fix */
@@ -312,4 +312,24 @@
     background: rgba(55, 65, 81, 0.95) !important;
     border: 1px solid rgba(107, 114, 128, 0.3) !important;
     backdrop-filter: blur(20px);
+}
+
+/* Location Warning Dark Mode Fix */
+[data-theme="dark"] .location-warning {
+    background: rgba(55, 65, 81, 0.95) !important;
+    border: 1px solid rgba(245, 101, 101, 0.3) !important;
+    backdrop-filter: blur(20px);
+}
+
+[data-theme="dark"] .location-warning h2 {
+    color: #f56565 !important;
+}
+
+[data-theme="dark"] .location-warning p {
+    color: #f1f5f9 !important;
+}
+
+/* Location Loading Dark Mode Fix */
+[data-theme="dark"] .location-loading {
+    color: #f1f5f9 !important;
 }

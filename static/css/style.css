@@ -131,9 +131,8 @@ body::before {
 }
 
 .privacy-icon {
-    width: 28px;
-    height: 28px;
-    stroke: var(--primary);
+    font-size: 1.25rem;
+    color: var(--primary);
     flex-shrink: 0;
 }
 
@@ -400,9 +399,11 @@ select {
 }
 
 .btn-icon {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5px;
+    display: inline-block;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
 }
 
 .submit-btn::before {
@@ -451,10 +452,8 @@ select {
     box-shadow: 0 8px 20px var(--success-alpha-30);
 }
 
-.success-icon svg {
-    width: 40px;
-    height: 40px;
-    stroke-width: 3px;
+.success-icon i {
+    font-size: 2rem;
 }
 
 .success-message h2 {
@@ -605,14 +604,11 @@ select {
 }
 
 .btn-icon {
-    width: 20px;
-    height: 20px;
-    stroke-width: 2.5px;
-}
-
-.register-btn {
-    background: var(--success);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    display: inline-block;
+    font-size: 1rem;
+    width: auto;
+    height: auto;
+    line-height: 1;
 }
 
 .register-btn:hover {
@@ -847,6 +843,17 @@ select {
     transform: translateX(-4px);
 }
 
+.nav-link-danger {
+    color: #dc2626;
+    border-color: #dc2626;
+}
+
+.nav-link-danger:hover {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
 .nav-link svg {
     width: 18px;
     height: 18px;
@@ -938,26 +945,26 @@ select {
     background: var(--success-alpha-10);
 }
 
-.stat-icon svg {
-    width: 28px;
-    height: 28px;
-    stroke-width: 2px;
+.stat-icon i {
+    width: auto;
+    height: auto;
+    font-size: 1.5rem;
 }
 
-.stat-card.total .stat-icon svg {
-    stroke: var(--primary);
+.stat-card.total .stat-icon i {
+    color: var(--primary);
 }
 
-.stat-card.pending .stat-icon svg {
-    stroke: var(--warning);
+.stat-card.pending .stat-icon i {
+    color: var(--warning);
 }
 
-.stat-card.progress .stat-icon svg {
-    stroke: var(--info);
+.stat-card.progress .stat-icon i {
+    color: var(--info);
 }
 
-.stat-card.resolved .stat-icon svg {
-    stroke: var(--success);
+.stat-card.resolved .stat-icon i {
+    color: var(--success);
 }
 
 .stat-content h3 {
@@ -1261,9 +1268,12 @@ select {
 }
 
 .detail-header .theme-icon {
+    display: inline-block;
     width: 20px;
-    height: 20px;
-    stroke: white;
+    height: auto;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--text-primary);
     transition: all 0.3s ease;
     position: absolute;
 }
@@ -1618,9 +1628,12 @@ select {
 }
 
 .theme-icon {
+    display: inline-block;
     width: 20px;
-    height: 20px;
-    stroke: white;
+    height: auto;
+    font-size: 1rem;
+    line-height: 1;
+    color: white;
     transition: all 0.3s ease;
     position: absolute;
 }

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - RPSU Complaint Box</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Work+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="grain"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-ornament"></div>
+            <h1 class="title">RPSU</h1>
+            <p class="subtitle">Admin Panel</p>
+            <div class="header-line"></div>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-sun theme-icon sun"></i>
+                <i class="fa-solid fa-moon theme-icon moon"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <div class="login-form-container">
+                <h2>Admin Login</h2>
+                <form id="adminLoginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Enter admin username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter admin password"
+                            required>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Login as Admin
+                    </button>
+                </form>
+                <div class="register-link">
+                    <p><a href="{{ url_for('index') }}">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Home
+                        </a></p>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>R. P. Shaha University</p>
+            <p class="footer-note">Restricted access — authorized personnel only</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('adminLoginForm');
+            const errorMessage = document.getElementById('errorMessage');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                errorMessage.style.display = 'none';
+
+                fetch('/admin/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        username: document.getElementById('username').value,
+                        password: document.getElementById('password').value
+                    })
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            window.location.href = '/admin';
+                        } else {
+                            errorMessage.textContent = data.message;
+                            errorMessage.style.display = 'block';
+                        }
+                    })
+                    .catch(() => {
+                        errorMessage.textContent = 'An error occurred. Please try again.';
+                        errorMessage.style.display = 'block';
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>
